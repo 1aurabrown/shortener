@@ -5,7 +5,8 @@ class Link < ActiveRecord::Base
 
   def prepend_http
     unless (self.out_url =~ /http/) == 0
-      self.out_url.prepend 'http://'
+
+      self.out_url.insert 0, 'http://'
     end
   end
 end

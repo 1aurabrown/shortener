@@ -23,8 +23,13 @@ class LinksController < ApplicationController
 
 #GET /:in_url
   def go
-    @link = Link.find_by_in_url(params[:in_url])
-    redirect_to @link.out_url, :status => @link.http_status
+    if @link = Link.find_by_in_url(params[:in_url])
+      redirect_to @link.out_url, :status => @link.http_status
+    else
+      respond_to do |format|
+        format.html { redirect_to new_link_path(:url => params[:in_url]), notice: 'This link shortcut does not point anywhere. Would you like it to?' }
+      end
+    end
   end
 
   # GET /links/new

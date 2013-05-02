@@ -1,20 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>In url:</b>
-  <%= @link.in_url %>
+  <b>Input URL:</b>
+  <%= link_to "http://laura-link-shortener.herokuapp.com/#{@link.in_url}", "http://laura-link-shortener.herokuapp.com/#{@link.in_url}" %>
 </p>
 
 <p>
-  <b>Out url:</b>
-  <%= @link.out_url %>
-</p>
-
-<p>
-  <b>Http status:</b>
-  <%= @link.http_status %>
+  <b>URL to redirect to:</b>
+  <%= link_to @link.out_url, @link.out_url %>
 </p>
 
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
 <%= link_to 'Back', links_path %>
